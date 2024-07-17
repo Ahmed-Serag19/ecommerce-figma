@@ -1,0 +1,9 @@
+<section class="py-20">
+  <div class="flex justify-center gap-12">
+    <div *ngFor="let stat of statistics" class="stat-card">
+      <img [src]="stat.icon" class="material-icons" />
+      <h2 class="text-2xl pt-4 font-semibold">{{ stat.value }}</h2>
+      <p class="text-lg">{{ stat.description }}</p>
+    </div>
+  </div>
+</section>

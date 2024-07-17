@@ -1,0 +1,47 @@
+<nav class="border-gray-200 border-solid border-b bg-slate-50">
+  <div class="content w-3/4 m-auto flex justify-around py-6 items-end">
+    <h1 class="font-bold text-3xl">Exclusive</h1>
+    <div class="nav-links">
+      <div class="flex gap-7 items-center justify-center pt-3 text-lg">
+        <a
+          routerLink="home"
+          routerLinkActive="activebutton"
+          class="relative cursor-pointer text-xl w-fit block after:block after:content-[''] after:absolute after:h-[3px] after:bg-blue-400 after:w-full after:scale-x-0 after:hover:scale-x-100 after:transition after:duration-300 after:origin-center"
+        >
+          Home
+        </a>
+
+        <a
+          routerLink="about"
+          routerLinkActive="activebutton"
+          class="relative cursor-pointer text-xl w-fit block after:block after:content-[''] after:absolute after:h-[3px] after:bg-blue-400 after:w-full after:scale-x-0 after:hover:scale-x-100 after:transition after:duration-300 after:origin-center"
+        >
+          About
+        </a>
+
+        <a
+          routerLink="contact"
+          routerLinkActive="activebutton"
+          class="relative cursor-pointer text-xl w-fit block after:block after:content-[''] after:absolute after:h-[3px] after:bg-blue-400 after:w-full after:scale-x-0 after:hover:scale-x-100 after:transition after:duration-300 after:origin-center"
+        >
+          Contact
+        </a>
+      </div>
+    </div>
+    <div class="nav-utilities flex justify-center items-center gap-6">
+      <i
+        class="pi pi-heart cursor-pointer favourites-icon"
+        style="color: #f92222; font-size: 1.5rem"
+      ></i>
+
+      <i
+        class="pi pi-shopping-cart cursor-pointer cart-icon"
+        style="color: #3b82f6; font-size: 1.5rem"
+      ></i>
+
+      <a routerLink="/register" class="p-button font-bold text-white py-2">
+        Register
+      </a>
+    </div>
+  </div>
+</nav>

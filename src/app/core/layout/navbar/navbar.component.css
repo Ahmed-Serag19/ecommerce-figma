@@ -1,0 +1,26 @@
+.nav-links ul li {
+  transition: 0.5s all ease-in-out;
+  font-weight: 500;
+}
+.nav-links ul li:hover {
+  color: #3b82f6;
+  border-bottom: gray 1px;
+}
+.favourites-icon::before {
+  transition: 0.5s all;
+}
+.favourites-icon:hover::before {
+  color: rgb(250, 59, 59);
+  content: "\e9e1";
+}
+
+.cart-icon::before {
+  transition: 0.5s all;
+}
+.cart-icon:hover::before {
+  color: rgb(0, 20, 195);
+  content: "\ea2e";
+}
+.activebutton {
+  color: #3b82f6;
+}

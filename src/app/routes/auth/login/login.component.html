@@ -1,0 +1,66 @@
+<section class="flex items-center justify-center py-3 auth">
+  <div class="flex bg-white overflow-hidden max-w-6xl">
+    <div class="image-container 2xl:w-1/2">
+      <img [src]="imagePath" alt="Logo" />
+    </div>
+    <div class="p-5 w-96 flex flex-col justify-center">
+      <h1 class="text-2xl font-bold mb-4">Log in to Exclusive</h1>
+      <p class="mb-6 text-gray-600">Enter your credentials below</p>
+      <form
+        [formGroup]="loginForm"
+        (ngSubmit)="onSubmit()"
+        class="space-y-4 flex flex-col gap-2"
+      >
+        <p-floatLabel>
+          <input
+            id="email"
+            formControlName="email"
+            pInputText
+            type="email"
+            required
+            class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring focus:border-blue-300"
+          />
+          <label for="email" class="block text-sm font-medium text-red-600"
+            >Email</label
+          >
+        </p-floatLabel>
+        <p-floatLabel>
+          <input
+            id="password"
+            formControlName="password"
+            type="password"
+            pInputText
+            required
+            class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring focus:border-blue-300"
+          />
+          <label for="password" class="block text-sm font-medium text-red-600"
+            >Password</label
+          >
+        </p-floatLabel>
+        <div class="flex justify-around items-center">
+          <button
+            type="submit"
+            class="w-28 bg-red-500 text-white py-2 rounded-md hover:bg-red-600"
+          >
+            Log In
+          </button>
+          <a
+            routerLink="/forgot-password"
+            class="text-red-500 hover:underline cursor-pointer"
+          >
+            Forgot Password?
+          </a>
+        </div>
+      </form>
+
+      <p class="mt-4 text-center text-gray-600">
+        Don't have an account?
+        <a
+          routerLink="/register"
+          class="text-red-500 hover:underline cursor-pointer"
+          >Create an account</a
+        >
+      </p>
+    </div>
+  </div>
+</section>

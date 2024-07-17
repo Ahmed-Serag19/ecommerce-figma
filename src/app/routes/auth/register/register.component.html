@@ -1,0 +1,190 @@
+<section class="flex items-center justify-center py-2 auth">
+  <div class="flex bg-white overflow-hidden max-w-6xl">
+    <div class="image-container 2xl:w-1/2">
+      <img [src]="imagePath" alt="Logo" />
+    </div>
+    <div class="p-5 w-96 flex flex-col justify-center">
+      <h1 class="text-2xl font-bold mb-4">Create an account</h1>
+      <p class="mb-6 text-gray-600">Enter your details below</p>
+      <form
+        [formGroup]="registerForm"
+        (ngSubmit)="onSubmit()"
+        class="space-y-4 flex flex-col gap-2"
+      >
+        <p-floatLabel>
+          <input
+            id="name"
+            formControlName="name"
+            type="text"
+            pInputText
+            [(ngModel)]="name"
+            required
+            class="mt-1 w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring focus:border-blue-300"
+          />
+          <label for="name" class="text-sm font-medium text-red-600"
+            >Name</label
+          >
+        </p-floatLabel>
+        <div
+          *ngIf="
+            registerForm.get('name')?.touched &&
+            registerForm.get('name')?.invalid
+          "
+          class="text-red-500 text-sm"
+        >
+          <div *ngIf="registerForm.get('name')?.errors?.['required']">
+            Name is required.
+          </div>
+          <div *ngIf="registerForm.get('name')?.errors?.['minlength']">
+            Name must be at least 5 characters long.
+          </div>
+          <div *ngIf="registerForm.get('name')?.errors?.['maxLength']">
+            Name cannot be more than 20 characters long.
+          </div>
+        </div>
+
+        <p-floatLabel>
+          <input
+            id="email"
+            formControlName="email"
+            type="email"
+            pInputText
+            required
+            class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring focus:border-blue-300"
+          />
+          <label for="email" class="block text-sm font-medium text-red-600"
+            >Email</label
+          >
+        </p-floatLabel>
+        <div
+          *ngIf="
+            registerForm.get('email')?.touched &&
+            registerForm.get('email')?.invalid
+          "
+          class="text-red-500 text-sm"
+        >
+          <div *ngIf="registerForm.get('email')?.errors?.['required']">
+            Email is required.
+          </div>
+          <div *ngIf="registerForm.get('email')?.errors?.['email']">
+            Invalid email address.
+          </div>
+          <div *ngIf="registerForm.get('email')?.errors?.['maxLength']">
+            Email cannot be more than 30 characters long.
+          </div>
+        </div>
+
+        <p-floatLabel>
+          <input
+            id="password"
+            formControlName="password"
+            type="password"
+            pInputText
+            required
+            class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring focus:border-blue-300"
+          />
+          <label for="password" class="block text-sm font-medium text-red-600"
+            >Password</label
+          >
+        </p-floatLabel>
+        <div
+          *ngIf="
+            registerForm.get('password')?.touched &&
+            registerForm.get('password')?.invalid
+          "
+          class="text-red-500 text-sm"
+        >
+          <div *ngIf="registerForm.get('password')?.errors?.['required']">
+            Password is required.
+          </div>
+          <div *ngIf="registerForm.get('password')?.errors?.['pattern']">
+            Password must be 7-20 characters long, contain at least one
+            uppercase letter, one lowercase letter, one digit, and one special
+            character.
+          </div>
+        </div>
+
+        <p-floatLabel>
+          <input
+            id="rePassword"
+            formControlName="rePassword"
+            type="password"
+            pInputText
+            required
+            class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring focus:border-blue-300"
+          />
+          <label for="rePassword" class="block text-sm font-medium text-red-600"
+            >Re-enter Password</label
+          >
+        </p-floatLabel>
+        <div
+          *ngIf="
+            registerForm.get('rePassword')?.touched &&
+            registerForm.get('rePassword')?.invalid
+          "
+          class="text-red-500 text-sm"
+        >
+          <div *ngIf="registerForm.get('rePassword')?.errors?.['required']">
+            Please re-enter your password.
+          </div>
+          <div *ngIf="registerForm.get('rePassword')?.errors?.['pattern']">
+            Password must be 7-20 characters long, contain at least one
+            uppercase letter, one lowercase letter, one digit, and one special
+            character.
+          </div>
+          <div
+            *ngIf="registerForm.get('rePassword')?.errors?.['passwordMismatch']"
+          >
+            Passwords do not match.
+          </div>
+        </div>
+
+        <p-floatLabel>
+          <input
+            id="phone"
+            formControlName="phone"
+            type="tel"
+            pInputText
+            required
+            class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring focus:border-blue-300"
+          />
+          <label for="phone" class="block text-sm font-medium text-red-600"
+            >Phone Number</label
+          >
+        </p-floatLabel>
+        <div
+          *ngIf="
+            registerForm.get('phone')?.touched &&
+            registerForm.get('phone')?.invalid
+          "
+          class="text-red-500 text-sm"
+        >
+          <div *ngIf="registerForm.get('phone')?.errors?.['required']">
+            Phone number is required.
+          </div>
+          <div *ngIf="registerForm.get('phone')?.errors?.['pattern']">
+            Invalid phone number. It must start with 010, 012, 015, and be 11
+            digits long.
+          </div>
+        </div>
+
+        <button
+          type="submit"
+          class="w-full bg-red-500 text-white py-2 rounded-md hover:bg-red-600"
+          [disabled]="registerForm.invalid"
+        >
+          Create Account
+        </button>
+      </form>
+
+      <p class="mt-4 text-center text-gray-600">
+        Already have an account?
+        <a
+          routerLink="/login"
+          class="text-red-500 hover:underline cursor-pointer"
+          >Log in</a
+        >
+      </p>
+    </div>
+  </div>
+</section>
