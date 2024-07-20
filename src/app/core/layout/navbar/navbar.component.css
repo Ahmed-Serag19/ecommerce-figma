@@ -15,7 +15,7 @@
 }
 
 .cart-icon::before {
-  transition: 0.5s all;
+  transition: 0.7s all;
 }
 .cart-icon:hover::before {
   color: rgb(0, 20, 195);

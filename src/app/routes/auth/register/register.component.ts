@@ -12,6 +12,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { FloatLabelModule } from 'primeng/floatlabel';
 import { InputTextModule } from 'primeng/inputtext';
+import { AuthService } from '../../../services/auth/auth.service';
 function passwordMatchValidator(): ValidatorFn {
   return (control: AbstractControl): ValidationErrors | null => {
     const password = control.root.get('password');
@@ -54,14 +55,11 @@ export class RegisterComponent {
     password: new FormControl(null, [
       Validators.required,
       Validators.pattern(
-        /^(?=.*[A-Z])(?=.*[a-z])(?=.*[0-9])(?=.*[!@#$%^&*])[A-Z][a-z0-9!@#$%^&*]{7,20}$/
+        /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[$@$!%*?&])[A-Za-z\d$@$!%*?&]{8,}$/
       ),
     ]),
     rePassword: new FormControl(null, [
       Validators.required,
-      Validators.pattern(
-        /^(?=.*[A-Z])(?=.*[a-z])(?=.*[0-9])(?=.*[!@#$%^&*])[A-Z][a-z0-9!@#$%^&*]{7,20}$/
-      ),
       passwordMatchValidator(),
     ]),
     phone: new FormControl(null, [
@@ -71,7 +69,18 @@ export class RegisterComponent {
   });
 
   imagePath: string = 'assets/images/log-reg.png';
-  onSubmit() {
-    console.log('Hello');
+  constructor(private _AuthService: AuthService) {}
+  handleRegister() {
+    if (this.registerForm.valid) {
+      this._AuthService.register(this.registerForm.value).subscribe({
+        next: (res) => {
+          console.log('Registration successful', res);
+          this.registerForm.reset();
+        },
+        error: (err) => {
+          console.error('Error registering', err);
+        },
+      });
+    }
   }
 }

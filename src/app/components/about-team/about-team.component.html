@@ -1,5 +1,8 @@
 <div class="flex flex-wrap justify-center py-8">
-  <div *ngFor="let member of ourTeam" class="max-w-lg p-4">
+  <div
+    *ngFor="let member of ourTeam"
+    class="max-w-lg p-4 hover:shadow-lg transition-all duration-500 ease-in-out"
+  >
     <div class="p-6 rounded-lg">
       <img
         [src]="member.imageUrl"

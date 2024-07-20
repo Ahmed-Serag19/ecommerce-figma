@@ -6,10 +6,11 @@ import { Observable } from 'rxjs';
   providedIn: 'root',
 })
 export class AuthService {
-  private apiUrl = 'https://api.example.com/auth';
+  private apiUrl = 'https://ecommerce.routemisr.com';
 
-  constructor(private _HttpClient: HttpClient) {}
+  constructor(private http: HttpClient) {}
+
   register(user: object): Observable<any> {
-    return this._HttpClient.post(`${this.apiUrl}/register`, user);
+    return this.http.post(`${this.apiUrl}/api/v1/auth/signup`, user);
   }
 }

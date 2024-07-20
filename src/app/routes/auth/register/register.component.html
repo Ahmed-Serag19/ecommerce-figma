@@ -1,14 +1,16 @@
 <section class="flex items-center justify-center py-2 auth">
-  <div class="flex bg-white overflow-hidden max-w-6xl">
-    <div class="image-container 2xl:w-1/2">
-      <img [src]="imagePath" alt="Logo" />
+  <div class="flex bg-white px-3">
+    <div
+      class="image-container 2xl:w-3/5 xl:w-1/2 flex justify-center items-center"
+    >
+      <img [src]="imagePath" alt="Logo" class="w-full" />
     </div>
     <div class="p-5 w-96 flex flex-col justify-center">
       <h1 class="text-2xl font-bold mb-4">Create an account</h1>
       <p class="mb-6 text-gray-600">Enter your details below</p>
       <form
         [formGroup]="registerForm"
-        (ngSubmit)="onSubmit()"
+        (ngSubmit)="handleRegister(registerForm)"
         class="space-y-4 flex flex-col gap-2"
       >
         <p-floatLabel>
@@ -21,7 +23,7 @@
             required
             class="mt-1 w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring focus:border-blue-300"
           />
-          <label for="name" class="text-sm font-medium text-red-600"
+          <label for="name" class="text-sm font-medium text-gray-700"
             >Name</label
           >
         </p-floatLabel>
@@ -52,7 +54,7 @@
             required
             class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring focus:border-blue-300"
           />
-          <label for="email" class="block text-sm font-medium text-red-600"
+          <label for="email" class="block text-sm font-medium text-gray-700"
             >Email</label
           >
         </p-floatLabel>
@@ -83,7 +85,7 @@
             required
             class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring focus:border-blue-300"
           />
-          <label for="password" class="block text-sm font-medium text-red-600"
+          <label for="password" class="block text-sm font-medium text-gray-700"
             >Password</label
           >
         </p-floatLabel>
@@ -98,7 +100,7 @@
             Password is required.
           </div>
           <div *ngIf="registerForm.get('password')?.errors?.['pattern']">
-            Password must be 7-20 characters long, contain at least one
+            Password must be atleast 8 characters long, contain at least one
             uppercase letter, one lowercase letter, one digit, and one special
             character.
           </div>
@@ -113,7 +115,9 @@
             required
             class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring focus:border-blue-300"
           />
-          <label for="rePassword" class="block text-sm font-medium text-red-600"
+          <label
+            for="rePassword"
+            class="block text-sm font-medium text-gray-700"
             >Re-enter Password</label
           >
         </p-floatLabel>
@@ -127,11 +131,7 @@
           <div *ngIf="registerForm.get('rePassword')?.errors?.['required']">
             Please re-enter your password.
           </div>
-          <div *ngIf="registerForm.get('rePassword')?.errors?.['pattern']">
-            Password must be 7-20 characters long, contain at least one
-            uppercase letter, one lowercase letter, one digit, and one special
-            character.
-          </div>
+
           <div
             *ngIf="registerForm.get('rePassword')?.errors?.['passwordMismatch']"
           >
@@ -148,7 +148,7 @@
             required
             class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring focus:border-blue-300"
           />
-          <label for="phone" class="block text-sm font-medium text-red-600"
+          <label for="phone" class="block text-sm font-medium text-gray-700"
             >Phone Number</label
           >
         </p-floatLabel>
